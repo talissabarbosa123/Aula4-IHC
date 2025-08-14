@@ -1,0 +1,84 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const SandubaApp());
+}
+
+class SandubaApp extends StatelessWidget {
+  const SandubaApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+	appBar: AppBar(
+	  title: const Text('Sanduba!'),
+	  backgroundColor: Colors.blueGrey,
+	  centerTitle: true,
+	),
+	body: const SandubaHomePage(),
+      ),
+    );
+  }
+}
+
+class SandubaHomePage extends StatelessWidget {
+  const SandubaHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+	mainAxisAlignment: MainAxisAlignment.center,
+	children: [
+	  // Placeholder para a imagem, já que DartPad não suporta assets locais
+	  Container(
+	    width: 100,
+	    height: 100,
+	    child: Center(
+	      child: Container(
+		height: 100,
+		child: Image.network(
+		  'https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2022/12/hamburguer-unsplash.jpg?w=1200&h=1200&crop=1',
+		),
+	      ),
+	    ),
+	  ),
+	  const SizedBox(height: 10),
+	  const Text(
+	    'Delicioso hambúrguer artesanal com carne suculenta, queijo derretido, alface, tomate e molho especial.',
+	    textAlign: TextAlign.center,
+	    style: TextStyle(fontSize: 10),
+	  ),
+	  const SizedBox(height: 10),
+	  const Text(
+	    'R\$ 23,99',
+	    style: TextStyle(
+	      fontSize: 24,
+	      fontWeight: FontWeight.bold,
+	      color: Colors.blueGrey,
+	    ),
+	  ),
+	  const SizedBox(height: 10),
+	  ElevatedButton(
+	    onPressed: () {
+	      // Ação do botão (pode ser expandida no futuro)
+	      ScaffoldMessenger.of(context).showSnackBar(
+		const SnackBar(content: Text('Adicionado ao carrinho!')),
+	      );
+	    },
+	    style: ElevatedButton.styleFrom(
+	      backgroundColor: Colors.blueGrey,
+	      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+	    ),
+	    child: const Text(
+	      'Adicionar ao Carrinho',
+	      style: TextStyle(fontSize: 18, color: Colors.white),
+	    ),
+	  ),
+	],
+      ),
+    );
+  }
+}
